@@ -45,12 +45,13 @@ namespace MissionPlanner.GCSViews.ConfigurationView
             catch { }
 
             float pwm = 0;
-
+            float pwm2 = 0;
             if (MainV2.comPort.MAV.cs.firmware == MainV2.Firmwares.ArduPlane || MainV2.comPort.MAV.cs.firmware == MainV2.Firmwares.ArduRover || MainV2.comPort.MAV.cs.firmware == MainV2.Firmwares.Ateryx) // APM 
             {
                 if (MainV2.comPort.MAV.param.ContainsKey("FLTMODE_CH") || MainV2.comPort.MAV.param.ContainsKey("MODE_CH"))
                 {
                     int sw = 0;
+                    int sw2 = 0;
                     if (MainV2.comPort.MAV.param.ContainsKey("FLTMODE_CH"))
                     {
                         sw = (int)(float)MainV2.comPort.MAV.param["FLTMODE_CH"];
@@ -59,7 +60,14 @@ namespace MissionPlanner.GCSViews.ConfigurationView
                     {
                         sw = (int)(float)MainV2.comPort.MAV.param["MODE_CH"];
                     }
-
+                    if (MainV2.comPort.MAV.param.ContainsKey("FLTMODE_CH2"))
+                    {
+                        sw2 = (int)(float)MainV2.comPort.MAV.param["FLTMODE_CH2"];
+                    }
+                    else
+                    {
+                        sw2 = (int)(float)MainV2.comPort.MAV.param["MODE_CH2"];
+                    }
                     switch (sw)
                     {
                         case 5:
@@ -78,7 +86,24 @@ namespace MissionPlanner.GCSViews.ConfigurationView
 
                             break;
                     }
+                    switch (sw2)
+                    {
+                        case 5:
+                            pwm2 = MainV2.comPort.MAV.cs.ch5in;
+                            break;
+                        case 6:
+                            pwm2 = MainV2.comPort.MAV.cs.ch6in;
+                            break;
+                        case 7:
+                            pwm2 = MainV2.comPort.MAV.cs.ch7in;
+                            break;
+                        case 8:
+                            pwm2 = MainV2.comPort.MAV.cs.ch8in;
+                            break;
+                        default:
 
+                            break;
+                    }
                     if (MainV2.comPort.MAV.param.ContainsKey("FLTMODE_CH"))
                     {
                         LBL_flightmodepwm.Text = MainV2.comPort.MAV.param["FLTMODE_CH"].ToString() + ": " + pwm.ToString();
@@ -86,6 +111,15 @@ namespace MissionPlanner.GCSViews.ConfigurationView
                     else
                     {
                         LBL_flightmodepwm.Text = MainV2.comPort.MAV.param["MODE_CH"].ToString() + ": " + pwm.ToString();
+                    }
+
+                    if (MainV2.comPort.MAV.param.ContainsKey("FLTMODE_CH2"))
+                    {
+                        LBL_flightmodepwm2.Text = MainV2.comPort.MAV.param["FLTMODE_CH2"].ToString() + ": " + pwm.ToString();
+                    }
+                    else
+                    {
+                        LBL_flightmodepwm2.Text = MainV2.comPort.MAV.param["MODE_CH2"].ToString() + ": " + pwm.ToString();
                     }
                 }
             }
@@ -96,28 +130,76 @@ namespace MissionPlanner.GCSViews.ConfigurationView
                 LBL_flightmodepwm.Text = "5: " + MainV2.comPort.MAV.cs.ch5in.ToString();
             }
 
-            Control[] fmodelist = new Control[] { CMB_fmode1, CMB_fmode2, CMB_fmode3, CMB_fmode4, CMB_fmode5, CMB_fmode6 };
+            Control[] fmodelist = new Control[] { CMB_fmode1, CMB_fmode2, CMB_fmode3, CMB_fmode4, CMB_fmode5, CMB_fmode6, CMB_fmode7,CMB_fmode8,CMB_fmode9 };
 
             foreach (Control ctl in fmodelist)
             {
                 ThemeManager.ApplyThemeTo(ctl);
             }
 
-            byte no = readSwitch(pwm);
+            byte no = readSwitch(pwm,pwm2);
 
             fmodelist[no].BackColor = Color.Green;
         }
 
         // from arducopter code
-        byte readSwitch(float inpwm)
+        byte readSwitch(float inpwm,float inpwm2)
         {
-            int pulsewidth = (int)inpwm;			// default for Arducopter
+            //int pulsewidth = (int)inpwm;			// default for Arducopter
 
-            if (pulsewidth > 1230 && pulsewidth <= 1360) return 1;
-            if (pulsewidth > 1360 && pulsewidth <= 1490) return 2;
-            if (pulsewidth > 1490 && pulsewidth <= 1620) return 3;
-            if (pulsewidth > 1620 && pulsewidth <= 1749) return 4;	// Software Manual
-            if (pulsewidth >= 1750) return 5;	// Hardware Manual
+            //if (pulsewidth > 1230 && pulsewidth <= 1360) return 1;
+            //if (pulsewidth > 1360 && pulsewidth <= 1490) return 2;
+            //if (pulsewidth > 1490 && pulsewidth <= 1620) return 3;
+            //if (pulsewidth > 1620 && pulsewidth <= 1749) return 4;	// Software Manual
+            //if (pulsewidth >= 1750) return 5;	// Hardware Manual
+            //return 0;
+            float pulsewidth = inpwm;
+            float pulsewidth2 = inpwm2;
+            if (pulsewidth < 1300)
+            {
+                if (pulsewidth2 < 1300)
+                {
+                    return 0;
+                }
+                else if (pulsewidth2 < 1700)
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
+            else if (pulsewidth < 1700)
+            {
+                if (pulsewidth2 < 1300)
+                {
+                    return 3;
+                }
+                else if (pulsewidth2 < 1700)
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
+            else
+            {
+                if (pulsewidth2 < 1300)
+                {
+                    return 6;
+                }
+                else if (pulsewidth2 < 1700)
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
             return 0;
         }
 
@@ -133,6 +215,9 @@ namespace MissionPlanner.GCSViews.ConfigurationView
                     MainV2.comPort.setParam("FLTMODE4", (float)Int32.Parse(CMB_fmode4.SelectedValue.ToString()));
                     MainV2.comPort.setParam("FLTMODE5", (float)Int32.Parse(CMB_fmode5.SelectedValue.ToString()));
                     MainV2.comPort.setParam("FLTMODE6", (float)Int32.Parse(CMB_fmode6.SelectedValue.ToString()));
+                    MainV2.comPort.setParam("FLTMODE7", (float)Int32.Parse(CMB_fmode7.SelectedValue.ToString()));
+                    MainV2.comPort.setParam("FLTMODE8", (float)Int32.Parse(CMB_fmode8.SelectedValue.ToString()));
+                    MainV2.comPort.setParam("FLTMODE9", (float)Int32.Parse(CMB_fmode9.SelectedValue.ToString()));
                 }
                 else if (MainV2.comPort.MAV.param.ContainsKey("MODE1"))
                 {
@@ -142,6 +227,9 @@ namespace MissionPlanner.GCSViews.ConfigurationView
                     MainV2.comPort.setParam("MODE4", (float)Int32.Parse(CMB_fmode4.SelectedValue.ToString()));
                     MainV2.comPort.setParam("MODE5", (float)Int32.Parse(CMB_fmode5.SelectedValue.ToString()));
                     MainV2.comPort.setParam("MODE6", (float)Int32.Parse(CMB_fmode6.SelectedValue.ToString()));
+                    MainV2.comPort.setParam("MODE7", (float)Int32.Parse(CMB_fmode7.SelectedValue.ToString()));
+                    MainV2.comPort.setParam("MODE8", (float)Int32.Parse(CMB_fmode8.SelectedValue.ToString()));
+                    MainV2.comPort.setParam("MODE9", (float)Int32.Parse(CMB_fmode9.SelectedValue.ToString()));
                 }
 
                 if (MainV2.comPort.MAV.cs.firmware == MainV2.Firmwares.ArduCopter2) // ac2
@@ -190,6 +278,9 @@ namespace MissionPlanner.GCSViews.ConfigurationView
                 CB_simple4.Visible = false;
                 CB_simple5.Visible = false;
                 CB_simple6.Visible = false;
+                CB_simple7.Visible = false;
+                CB_simple8.Visible = false;
+                CB_simple9.Visible = false;
 
                 chk_ss1.Visible = false;
                 chk_ss2.Visible = false;
@@ -197,6 +288,9 @@ namespace MissionPlanner.GCSViews.ConfigurationView
                 chk_ss4.Visible = false;
                 chk_ss5.Visible = false;
                 chk_ss6.Visible = false;
+                chk_ss7.Visible = false;
+                chk_ss8.Visible = false;
+                chk_ss9.Visible = false;
 
                 linkLabel1_ss.Visible = false;
 
@@ -208,12 +302,18 @@ namespace MissionPlanner.GCSViews.ConfigurationView
                     updateDropDown(CMB_fmode4, "FLTMODE4");
                     updateDropDown(CMB_fmode5, "FLTMODE5");
                     updateDropDown(CMB_fmode6, "FLTMODE6");
+                    updateDropDown(CMB_fmode7, "FLTMODE7");
+                    updateDropDown(CMB_fmode8, "FLTMODE8");
+                    updateDropDown(CMB_fmode9, "FLTMODE9");
 
                     CMB_fmode1.SelectedValue = int.Parse(MainV2.comPort.MAV.param["FLTMODE1"].ToString());
                     CMB_fmode2.SelectedValue = int.Parse(MainV2.comPort.MAV.param["FLTMODE2"].ToString());
                     CMB_fmode3.SelectedValue = int.Parse(MainV2.comPort.MAV.param["FLTMODE3"].ToString());
                     CMB_fmode4.SelectedValue = int.Parse(MainV2.comPort.MAV.param["FLTMODE4"].ToString());
                     CMB_fmode5.SelectedValue = int.Parse(MainV2.comPort.MAV.param["FLTMODE5"].ToString());
+                    CMB_fmode7.SelectedValue = int.Parse(MainV2.comPort.MAV.param["FLTMODE7"].ToString());
+                    CMB_fmode8.SelectedValue = int.Parse(MainV2.comPort.MAV.param["FLTMODE8"].ToString());
+                    CMB_fmode9.SelectedValue = int.Parse(MainV2.comPort.MAV.param["FLTMODE9"].ToString());
                     CMB_fmode6.Text = "Manual";
                     CMB_fmode6.Enabled = false;
                 }

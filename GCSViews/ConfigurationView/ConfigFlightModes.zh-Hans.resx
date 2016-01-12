@@ -229,4 +229,13 @@
   <data name="linkLabel1_ss.Text" xml:space="preserve">
     <value>简单和超简单模式介绍</value>
   </data>
+  <data name="CB_simple7.Text" xml:space="preserve">
+    <value>飞行模式 7</value>
+  </data>
+  <data name="CB_simple8.Text" xml:space="preserve">
+    <value>飞行模式 8</value>
+  </data>
+  <data name="CB_simple9.Text" xml:space="preserve">
+    <value>飞行模式 9</value>
+  </data>
 </root>

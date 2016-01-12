@@ -30,6 +30,9 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ConfigFlightModes));
+            this.CB_simple9 = new System.Windows.Forms.CheckBox();
+            this.CB_simple8 = new System.Windows.Forms.CheckBox();
+            this.CB_simple7 = new System.Windows.Forms.CheckBox();
             this.CB_simple6 = new System.Windows.Forms.CheckBox();
             this.CB_simple5 = new System.Windows.Forms.CheckBox();
             this.CB_simple4 = new System.Windows.Forms.CheckBox();
@@ -41,12 +44,21 @@
             this.label13 = new System.Windows.Forms.Label();
             this.lbl_currentmode = new System.Windows.Forms.Label();
             this.currentStateBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.label19 = new System.Windows.Forms.Label();
+            this.label20 = new System.Windows.Forms.Label();
+            this.label21 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
+            this.labelfm9 = new System.Windows.Forms.Label();
+            this.CMB_fmode9 = new System.Windows.Forms.ComboBox();
+            this.labelfm8 = new System.Windows.Forms.Label();
+            this.CMB_fmode8 = new System.Windows.Forms.ComboBox();
+            this.labelfm7 = new System.Windows.Forms.Label();
+            this.CMB_fmode7 = new System.Windows.Forms.ComboBox();
             this.labelfm6 = new System.Windows.Forms.Label();
             this.CMB_fmode6 = new System.Windows.Forms.ComboBox();
             this.labelfm5 = new System.Windows.Forms.Label();
@@ -60,6 +72,9 @@
             this.labelfm1 = new System.Windows.Forms.Label();
             this.CMB_fmode1 = new System.Windows.Forms.ComboBox();
             this.BUT_SaveModes = new MissionPlanner.Controls.MyButton();
+            this.chk_ss9 = new System.Windows.Forms.CheckBox();
+            this.chk_ss8 = new System.Windows.Forms.CheckBox();
+            this.chk_ss7 = new System.Windows.Forms.CheckBox();
             this.chk_ss6 = new System.Windows.Forms.CheckBox();
             this.chk_ss5 = new System.Windows.Forms.CheckBox();
             this.chk_ss4 = new System.Windows.Forms.CheckBox();
@@ -68,9 +83,29 @@
             this.chk_ss1 = new System.Windows.Forms.CheckBox();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.linkLabel1_ss = new System.Windows.Forms.LinkLabel();
+            this.LBL_flightmodepwm2 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.currentStateBindingSource)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
+            // 
+            // CB_simple9
+            // 
+            resources.ApplyResources(this.CB_simple9, "CB_simple9");
+            this.CB_simple9.Name = "CB_simple9";
+            this.CB_simple9.UseVisualStyleBackColor = true;
+            // 
+            // CB_simple8
+            // 
+            resources.ApplyResources(this.CB_simple8, "CB_simple8");
+            this.CB_simple8.Name = "CB_simple8";
+            this.CB_simple8.UseVisualStyleBackColor = true;
+            // 
+            // CB_simple7
+            // 
+            resources.ApplyResources(this.CB_simple7, "CB_simple7");
+            this.CB_simple7.Name = "CB_simple7";
+            this.CB_simple7.UseVisualStyleBackColor = true;
             // 
             // CB_simple6
             // 
@@ -133,6 +168,21 @@
             // 
             this.currentStateBindingSource.DataSource = typeof(MissionPlanner.CurrentState);
             // 
+            // label19
+            // 
+            resources.ApplyResources(this.label19, "label19");
+            this.label19.Name = "label19";
+            // 
+            // label20
+            // 
+            resources.ApplyResources(this.label20, "label20");
+            this.label20.Name = "label20";
+            // 
+            // label21
+            // 
+            resources.ApplyResources(this.label21, "label21");
+            this.label21.Name = "label21";
+            // 
             // label12
             // 
             resources.ApplyResources(this.label12, "label12");
@@ -162,6 +212,51 @@
             // 
             resources.ApplyResources(this.label7, "label7");
             this.label7.Name = "label7";
+            // 
+            // labelfm9
+            // 
+            resources.ApplyResources(this.labelfm9, "labelfm9");
+            this.labelfm9.Name = "labelfm9";
+            // 
+            // CMB_fmode9
+            // 
+            this.CMB_fmode9.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.CMB_fmode9.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.CMB_fmode9.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.CMB_fmode9.FormattingEnabled = true;
+            resources.ApplyResources(this.CMB_fmode9, "CMB_fmode9");
+            this.CMB_fmode9.Name = "CMB_fmode9";
+            this.CMB_fmode9.SelectedIndexChanged += new System.EventHandler(this.flightmode_SelectedIndexChanged);
+            // 
+            // labelfm8
+            // 
+            resources.ApplyResources(this.labelfm8, "labelfm8");
+            this.labelfm8.Name = "labelfm8";
+            // 
+            // CMB_fmode8
+            // 
+            this.CMB_fmode8.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.CMB_fmode8.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.CMB_fmode8.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.CMB_fmode8.FormattingEnabled = true;
+            resources.ApplyResources(this.CMB_fmode8, "CMB_fmode8");
+            this.CMB_fmode8.Name = "CMB_fmode8";
+            this.CMB_fmode8.SelectedIndexChanged += new System.EventHandler(this.flightmode_SelectedIndexChanged);
+            // 
+            // labelfm7
+            // 
+            resources.ApplyResources(this.labelfm7, "labelfm7");
+            this.labelfm7.Name = "labelfm7";
+            // 
+            // CMB_fmode7
+            // 
+            this.CMB_fmode7.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.CMB_fmode7.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.CMB_fmode7.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.CMB_fmode7.FormattingEnabled = true;
+            resources.ApplyResources(this.CMB_fmode7, "CMB_fmode7");
+            this.CMB_fmode7.Name = "CMB_fmode7";
+            this.CMB_fmode7.SelectedIndexChanged += new System.EventHandler(this.flightmode_SelectedIndexChanged);
             // 
             // labelfm6
             // 
@@ -260,6 +355,24 @@
             this.BUT_SaveModes.UseVisualStyleBackColor = true;
             this.BUT_SaveModes.Click += new System.EventHandler(this.BUT_SaveModes_Click);
             // 
+            // chk_ss9
+            // 
+            resources.ApplyResources(this.chk_ss9, "chk_ss9");
+            this.chk_ss9.Name = "chk_ss9";
+            this.chk_ss9.UseVisualStyleBackColor = true;
+            // 
+            // chk_ss8
+            // 
+            resources.ApplyResources(this.chk_ss8, "chk_ss8");
+            this.chk_ss8.Name = "chk_ss8";
+            this.chk_ss8.UseVisualStyleBackColor = true;
+            // 
+            // chk_ss7
+            // 
+            resources.ApplyResources(this.chk_ss7, "chk_ss7");
+            this.chk_ss7.Name = "chk_ss7";
+            this.chk_ss7.UseVisualStyleBackColor = true;
+            // 
             // chk_ss6
             // 
             resources.ApplyResources(this.chk_ss6, "chk_ss6");
@@ -303,6 +416,9 @@
             this.tableLayoutPanel1.Controls.Add(this.CMB_fmode1, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.chk_ss5, 3, 4);
             this.tableLayoutPanel1.Controls.Add(this.label11, 4, 5);
+            this.tableLayoutPanel1.Controls.Add(this.label19, 4, 6);
+            this.tableLayoutPanel1.Controls.Add(this.label20, 4, 7);
+            this.tableLayoutPanel1.Controls.Add(this.label21, 4, 8);
             this.tableLayoutPanel1.Controls.Add(this.chk_ss4, 3, 3);
             this.tableLayoutPanel1.Controls.Add(this.label10, 4, 4);
             this.tableLayoutPanel1.Controls.Add(this.chk_ss1, 3, 0);
@@ -326,10 +442,16 @@
             this.tableLayoutPanel1.Controls.Add(this.CMB_fmode4, 1, 3);
             this.tableLayoutPanel1.Controls.Add(this.CMB_fmode5, 1, 4);
             this.tableLayoutPanel1.Controls.Add(this.CMB_fmode6, 1, 5);
-            this.tableLayoutPanel1.Controls.Add(this.BUT_SaveModes, 1, 6);
+            this.tableLayoutPanel1.Controls.Add(this.BUT_SaveModes, 1, 9);
             this.tableLayoutPanel1.Controls.Add(this.CB_simple1, 2, 0);
             this.tableLayoutPanel1.Controls.Add(this.CB_simple6, 2, 5);
-            this.tableLayoutPanel1.Controls.Add(this.linkLabel1_ss, 3, 6);
+            this.tableLayoutPanel1.Controls.Add(this.linkLabel1_ss, 3, 9);
+            this.tableLayoutPanel1.Controls.Add(this.CMB_fmode7, 1, 6);
+            this.tableLayoutPanel1.Controls.Add(this.CMB_fmode8, 1, 7);
+            this.tableLayoutPanel1.Controls.Add(this.CMB_fmode9, 1, 8);
+            this.tableLayoutPanel1.Controls.Add(this.labelfm7, 0, 6);
+            this.tableLayoutPanel1.Controls.Add(this.labelfm8, 0, 7);
+            this.tableLayoutPanel1.Controls.Add(this.labelfm9, 0, 8);
             resources.ApplyResources(this.tableLayoutPanel1, "tableLayoutPanel1");
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             // 
@@ -340,10 +462,22 @@
             this.linkLabel1_ss.TabStop = true;
             this.linkLabel1_ss.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_ss_LinkClicked);
             // 
+            // LBL_flightmodepwm2
+            // 
+            resources.ApplyResources(this.LBL_flightmodepwm2, "LBL_flightmodepwm2");
+            this.LBL_flightmodepwm2.Name = "LBL_flightmodepwm2";
+            // 
+            // label2
+            // 
+            resources.ApplyResources(this.label2, "label2");
+            this.label2.Name = "label2";
+            // 
             // ConfigFlightModes
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.LBL_flightmodepwm2);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Controls.Add(this.label14);
             this.Controls.Add(this.LBL_flightmodepwm);
@@ -359,7 +493,9 @@
         }
 
         #endregion
-
+        private System.Windows.Forms.CheckBox CB_simple9;
+        private System.Windows.Forms.CheckBox CB_simple8;
+        private System.Windows.Forms.CheckBox CB_simple7;
         private System.Windows.Forms.CheckBox CB_simple6;
         private System.Windows.Forms.CheckBox CB_simple5;
         private System.Windows.Forms.CheckBox CB_simple4;
@@ -376,6 +512,16 @@
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label label19;
+        private System.Windows.Forms.Label label20;
+        private System.Windows.Forms.Label label21;
+
+        private System.Windows.Forms.Label labelfm9;
+        private System.Windows.Forms.ComboBox CMB_fmode9;
+        private System.Windows.Forms.Label labelfm8;
+        private System.Windows.Forms.ComboBox CMB_fmode8;
+        private System.Windows.Forms.Label labelfm7;
+        private System.Windows.Forms.ComboBox CMB_fmode7;
         private System.Windows.Forms.Label labelfm6;
         private System.Windows.Forms.ComboBox CMB_fmode6;
         private System.Windows.Forms.Label labelfm5;
@@ -390,6 +536,9 @@
         private System.Windows.Forms.ComboBox CMB_fmode1;
         private Controls.MyButton BUT_SaveModes;
         private System.Windows.Forms.BindingSource currentStateBindingSource;
+        private System.Windows.Forms.CheckBox chk_ss9;
+        private System.Windows.Forms.CheckBox chk_ss8;
+        private System.Windows.Forms.CheckBox chk_ss7;
         private System.Windows.Forms.CheckBox chk_ss6;
         private System.Windows.Forms.CheckBox chk_ss5;
         private System.Windows.Forms.CheckBox chk_ss4;
@@ -398,5 +547,7 @@
         private System.Windows.Forms.CheckBox chk_ss1;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.LinkLabel linkLabel1_ss;
+        private System.Windows.Forms.Label LBL_flightmodepwm2;
+        private System.Windows.Forms.Label label2;
     }
 }

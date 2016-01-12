@@ -6332,42 +6332,65 @@
       <Description>RC Channel to use for flight mode control</Description>
       <User>Advanced</User>
     </FLTMODE_CH>
+    <FLTMODE_CH2>
+      <DisplayName>Flightmode channel</DisplayName>
+      <Description>RC Channel to use for flight mode control</Description>
+      <User>Advanced</User>
+    </FLTMODE_CH2>
     <FLTMODE1>
       <DisplayName>FlightMode1</DisplayName>
-      <Values>0:Manual,1:CIRCLE,2:STABILIZE,3:TRAINING,4:ACRO,5:FBWA,6:FBWB,7:CRUISE,8:AUTOTUNE,10:Auto,11:RTL,12:Loiter,15:Guided</Values>
+      <Values>0:Manual,1:CIRCLE,2:STABILIZE,3:TRAINING,4:ACRO,5:FBWA,6:FBWB,7:CRUISE,8:AUTOTUNE,10:Auto,11:RTL,12:Loiter,15:Guided,17:TakeOff</Values>
       <User>Standard</User>
-      <Description>Flight mode for switch position 1 (910 to 1230 and above 2049)</Description>
+      <Description>Flight mode for switch position low and switch2 positon low(1300,1700 is middle)</Description>
     </FLTMODE1>
     <FLTMODE2>
       <DisplayName>FlightMode2</DisplayName>
-      <Description>Flight mode for switch position 2 (1231 to 1360)</Description>
-      <Values>0:Manual,1:CIRCLE,2:STABILIZE,3:TRAINING,4:ACRO,5:FBWA,6:FBWB,7:CRUISE,8:AUTOTUNE,10:Auto,11:RTL,12:Loiter,15:Guided</Values>
+      <Description>Flight mode for switch position low and switch2 positon middle(1300,1700 is middle)</Description>
+      <Values>0:Manual,1:CIRCLE,2:STABILIZE,3:TRAINING,4:ACRO,5:FBWA,6:FBWB,7:CRUISE,8:AUTOTUNE,10:Auto,11:RTL,12:Loiter,15:Guided,17:TakeOff</Values>
       <User>Standard</User>
     </FLTMODE2>
     <FLTMODE3>
       <DisplayName>FlightMode3</DisplayName>
-      <Description>Flight mode for switch position 3 (1361 to 1490)</Description>
-      <Values>0:Manual,1:CIRCLE,2:STABILIZE,3:TRAINING,4:ACRO,5:FBWA,6:FBWB,7:CRUISE,8:AUTOTUNE,10:Auto,11:RTL,12:Loiter,15:Guided</Values>
+      <Description>Flight mode for switch position low and switch2 positon high(1300,1700 is middle)</Description>
+      <Values>0:Manual,1:CIRCLE,2:STABILIZE,3:TRAINING,4:ACRO,5:FBWA,6:FBWB,7:CRUISE,8:AUTOTUNE,10:Auto,11:RTL,12:Loiter,15:Guided,17:TakeOff</Values>
       <User>Standard</User>
     </FLTMODE3>
     <FLTMODE4>
       <DisplayName>FlightMode4</DisplayName>
-      <Description>Flight mode for switch position 4 (1491 to 1620)</Description>
-      <Values>0:Manual,1:CIRCLE,2:STABILIZE,3:TRAINING,4:ACRO,5:FBWA,6:FBWB,7:CRUISE,8:AUTOTUNE,10:Auto,11:RTL,12:Loiter,15:Guided</Values>
+      <Description>Flight mode for switch position middle and switch2 positon low(1300,1700 is middle)</Description>
+      <Values>0:Manual,1:CIRCLE,2:STABILIZE,3:TRAINING,4:ACRO,5:FBWA,6:FBWB,7:CRUISE,8:AUTOTUNE,10:Auto,11:RTL,12:Loiter,15:Guided,17:TakeOff</Values>
       <User>Standard</User>
     </FLTMODE4>
     <FLTMODE5>
       <DisplayName>FlightMode5</DisplayName>
-      <Description>Flight mode for switch position 5 (1621 to 1749)</Description>
-      <Values>0:Manual,1:CIRCLE,2:STABILIZE,3:TRAINING,4:ACRO,5:FBWA,6:FBWB,7:CRUISE,8:AUTOTUNE,10:Auto,11:RTL,12:Loiter,15:Guided</Values>
+      <Description>Flight mode for switch position middle and switch2 positon middle(1300,1700 is middle)</Description>
+      <Values>0:Manual,1:CIRCLE,2:STABILIZE,3:TRAINING,4:ACRO,5:FBWA,6:FBWB,7:CRUISE,8:AUTOTUNE,10:Auto,11:RTL,12:Loiter,15:Guided,17:TakeOff</Values>
       <User>Standard</User>
     </FLTMODE5>
     <FLTMODE6>
       <DisplayName>FlightMode6</DisplayName>
-      <Description>Flight mode for switch position 6 (1750 to 2049)</Description>
-      <Values>0:Manual,1:CIRCLE,2:STABILIZE,3:TRAINING,4:ACRO,5:FBWA,6:FBWB,7:CRUISE,8:AUTOTUNE,10:Auto,11:RTL,12:Loiter,15:Guided</Values>
+      <Description>Flight mode for switch position middle and switch2 positon high(1300,1700 is middle)</Description>
+      <Values>0:Manual,1:CIRCLE,2:STABILIZE,3:TRAINING,4:ACRO,5:FBWA,6:FBWB,7:CRUISE,8:AUTOTUNE,10:Auto,11:RTL,12:Loiter,15:Guided,17:TakeOff</Values>
       <User>Standard</User>
     </FLTMODE6>
+    <FLTMODE7>
+      <DisplayName>FlightMode7</DisplayName>
+      <Description>Flight mode for switch position high and switch2 positon low(1300,1700 is middle)</Description>
+      <Values>0:Manual,1:CIRCLE,2:STABILIZE,3:TRAINING,4:ACRO,5:FBWA,6:FBWB,7:CRUISE,8:AUTOTUNE,10:Auto,11:RTL,12:Loiter,15:Guided,17:TakeOff</Values>
+      <User>Standard</User>
+    </FLTMODE7>
+      <FLTMODE8>
+      <DisplayName>FlightMode8</DisplayName>
+      <Description>Flight mode for switch position high and switch2 positon middle(1300,1700 is middle)</Description>
+      <Values>0:Manual,1:CIRCLE,2:STABILIZE,3:TRAINING,4:ACRO,5:FBWA,6:FBWB,7:CRUISE,8:AUTOTUNE,10:Auto,11:RTL,12:Loiter,15:Guided,17:TakeOff</Values>
+      <User>Standard</User>
+    </FLTMODE8>
+        <FLTMODE9>
+      <DisplayName>FlightMode9</DisplayName>
+      <Description>Flight mode for switch position high and switch2 positon high(1300,1700 is middle)</Description>
+      <Values>0:Manual,1:CIRCLE,2:STABILIZE,3:TRAINING,4:ACRO,5:FBWA,6:FBWB,7:CRUISE,8:AUTOTUNE,10:Auto,11:RTL,12:Loiter,15:Guided,17:TakeOff</Values>
+      <User>Standard</User>
+    </FLTMODE9>
     <LIM_ROLL_CD>
       <DisplayName>Maximum Bank Angle</DisplayName>
       <Description>The maximum commanded bank angle in either direction</Description>
