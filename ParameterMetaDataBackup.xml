@@ -2865,6 +2865,24 @@
       <Values>0:Stabilize,1:Acro,2:AltHold,3:Auto,4:Guided,5:Loiter,6:RTL,7:Circle,9:Land,10:OF_Loiter,11:Drift,13:Sport,16:PosHold</Values>
       <User>Standard</User>
     </FLTMODE6>
+    <FLTMODE7>
+      <DisplayName>Flight Mode 7</DisplayName>
+      <Description>Flight mode when Channel 5 pwm is &gt;=1750</Description>
+      <Values>0:Stabilize,1:Acro,2:AltHold,3:Auto,4:Guided,5:Loiter,6:RTL,7:Circle,9:Land,10:OF_Loiter,11:Drift,13:Sport,16:PosHold</Values>
+      <User>Standard</User>
+    </FLTMODE7>
+    <FLTMODE8>
+      <DisplayName>Flight Mode 8</DisplayName>
+      <Description>Flight mode when Channel 5 pwm is &gt;=1750</Description>
+      <Values>0:Stabilize,1:Acro,2:AltHold,3:Auto,4:Guided,5:Loiter,6:RTL,7:Circle,9:Land,10:OF_Loiter,11:Drift,13:Sport,16:PosHold</Values>
+      <User>Standard</User>
+    </FLTMODE8>
+    <FLTMODE9>
+      <DisplayName>Flight Mode 9</DisplayName>
+      <Description>Flight mode when Channel 5 pwm is &gt;=1750</Description>
+      <Values>0:Stabilize,1:Acro,2:AltHold,3:Auto,4:Guided,5:Loiter,6:RTL,7:Circle,9:Land,10:OF_Loiter,11:Drift,13:Sport,16:PosHold</Values>
+      <User>Standard</User>
+    </FLTMODE9>
     <SIMPLE>
       <DisplayName>Simple mode bitmask</DisplayName>
       <Description>Bitmask which holds which flight modes use simple heading mode (eg bit 0 = 1 means Flight Mode 0 uses simple mode)</Description>

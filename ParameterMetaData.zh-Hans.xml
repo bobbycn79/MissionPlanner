@@ -3126,6 +3126,24 @@
       <Values>0:自稳Stabilize,1:特技Acro,2:定高AltHold,3:自动Auto,4:引导Guided,5:留待Loiter,6:返航RTL,7:绕圈Circle,9:降落Land,11:飘移Drift,13:运动Sport,16:定点PosHold,17:起飞</Values>
       <User>Standard</User>
     </FLTMODE6>
+    <FLTMODE7>
+      <DisplayName>飞行模式 7</DisplayName>
+      <Description>当通道5 pwm &gt;=1750时的飞行模式是</Description>
+      <Values>0:自稳Stabilize,1:特技Acro,2:定高AltHold,3:自动Auto,4:引导Guided,5:留待Loiter,6:返航RTL,7:绕圈Circle,9:降落Land,11:飘移Drift,13:运动Sport,16:定点PosHold,17:起飞</Values>
+      <User>Standard</User>
+    </FLTMODE7>
+      <FLTMODE8>
+      <DisplayName>飞行模式 8</DisplayName>
+      <Description>当通道5 pwm &gt;=1750时的飞行模式是</Description>
+      <Values>0:自稳Stabilize,1:特技Acro,2:定高AltHold,3:自动Auto,4:引导Guided,5:留待Loiter,6:返航RTL,7:绕圈Circle,9:降落Land,11:飘移Drift,13:运动Sport,16:定点PosHold,17:起飞</Values>
+      <User>Standard</User>
+    </FLTMODE8>
+    <FLTMODE9>
+      <DisplayName>飞行模式 9</DisplayName>
+      <Description>当通道5 pwm &gt;=1750时的飞行模式是</Description>
+      <Values>0:自稳Stabilize,1:特技Acro,2:定高AltHold,3:自动Auto,4:引导Guided,5:留待Loiter,6:返航RTL,7:绕圈Circle,9:降落Land,11:飘移Drift,13:运动Sport,16:定点PosHold,17:起飞</Values>
+      <User>Standard</User>
+    </FLTMODE9>
     <SIMPLE>
       <DisplayName>简单模式位映射</DisplayName>
       <Description>位映射持有这飞行模式使用简单的标题模式(如位0 = 1意味着飞行模式0使用简单的模式)</Description>
@@ -6535,7 +6553,7 @@
       <Description>用于开关位置6的飞行模式（1750至2049）</Description>
       <Values>0:手动Manual,1:绕圈CIRCLE,2:自稳STABILIZE,3:教练TRAINING,4:特技ACRO,5:电传A|FBWA,6:电传B|FBWB,7:巡航CRUISE,8:自动调参AUTOTUNE,10:自动Auto,11:返航RTL,12:留待Loiter,15:引导Guided,17:起飞Takeoff</Values>
       <User>Standard</User>
-    </FLTMODE8
+    </FLTMODE8>
     <FLTMODE9>
       <DisplayName>飞行模式9</DisplayName>
       <Description>用于开关位置6的飞行模式（1750至2049）</Description>

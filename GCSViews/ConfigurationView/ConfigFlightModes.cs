@@ -128,7 +128,80 @@ namespace MissionPlanner.GCSViews.ConfigurationView
             {
                 pwm = MainV2.comPort.MAV.cs.ch5in;
                 LBL_flightmodepwm.Text = "5: " + MainV2.comPort.MAV.cs.ch5in.ToString();
-            }
+
+                int sw = 0;
+                    int sw2 = 0;
+                    if (MainV2.comPort.MAV.param.ContainsKey("FLTMODE_CH"))
+                    {
+                        sw = (int)(float)MainV2.comPort.MAV.param["FLTMODE_CH"];
+                    }
+                    else
+                    {
+                        sw = (int)(float)MainV2.comPort.MAV.param["MODE_CH"];
+                    }
+                    if (MainV2.comPort.MAV.param.ContainsKey("FLTMODE_CH2"))
+                    {
+                        sw2 = (int)(float)MainV2.comPort.MAV.param["FLTMODE_CH2"];
+                    }
+                    else
+                    {
+                        sw2 = (int)(float)MainV2.comPort.MAV.param["MODE_CH2"];
+                    }
+                    switch (sw)
+                    {
+                        case 5:
+                            pwm = MainV2.comPort.MAV.cs.ch5in;
+                            break;
+                        case 6:
+                            pwm = MainV2.comPort.MAV.cs.ch6in;
+                            break;
+                        case 7:
+                            pwm = MainV2.comPort.MAV.cs.ch7in;
+                            break;
+                        case 8:
+                            pwm = MainV2.comPort.MAV.cs.ch8in;
+                            break;
+                        default:
+
+                            break;
+                    }
+                    switch (sw2)
+                    {
+                        case 5:
+                            pwm2 = MainV2.comPort.MAV.cs.ch5in;
+                            break;
+                        case 6:
+                            pwm2 = MainV2.comPort.MAV.cs.ch6in;
+                            break;
+                        case 7:
+                            pwm2 = MainV2.comPort.MAV.cs.ch7in;
+                            break;
+                        case 8:
+                            pwm2 = MainV2.comPort.MAV.cs.ch8in;
+                            break;
+                        default:
+
+                            break;
+                    }
+                    if (MainV2.comPort.MAV.param.ContainsKey("FLTMODE_CH"))
+                    {
+                        LBL_flightmodepwm.Text = MainV2.comPort.MAV.param["FLTMODE_CH"].ToString() + ": " + pwm.ToString();
+                    }
+                    else
+                    {
+                        LBL_flightmodepwm.Text = MainV2.comPort.MAV.param["MODE_CH"].ToString() + ": " + pwm.ToString();
+                    }
+
+                    if (MainV2.comPort.MAV.param.ContainsKey("FLTMODE_CH2"))
+                    {
+                        LBL_flightmodepwm2.Text = MainV2.comPort.MAV.param["FLTMODE_CH2"].ToString() + ": " + pwm2.ToString();
+                    }
+                    else
+                    {
+                        LBL_flightmodepwm2.Text = MainV2.comPort.MAV.param["MODE_CH2"].ToString() + ": " + pwm2.ToString();
+                    }
+                }
+        
 
             Control[] fmodelist = new Control[] { CMB_fmode1, CMB_fmode2, CMB_fmode3, CMB_fmode4, CMB_fmode5, CMB_fmode6, CMB_fmode7,CMB_fmode8,CMB_fmode9 };
 
@@ -197,7 +270,7 @@ namespace MissionPlanner.GCSViews.ConfigurationView
                 }
                 else
                 {
-                    return 7;
+                    return 8;
                 }
             }
             return 0;
@@ -236,13 +309,15 @@ namespace MissionPlanner.GCSViews.ConfigurationView
                 {
                     // simple
                     float value = (float)(CB_simple1.Checked ? (int)SimpleMode.Simple1 : 0) + (CB_simple2.Checked ? (int)SimpleMode.Simple2 : 0) + (CB_simple3.Checked ? (int)SimpleMode.Simple3 : 0)
-                        + (CB_simple4.Checked ? (int)SimpleMode.Simple4 : 0) + (CB_simple5.Checked ? (int)SimpleMode.Simple5 : 0) + (CB_simple6.Checked ? (int)SimpleMode.Simple6 : 0);
+                        + (CB_simple4.Checked ? (int)SimpleMode.Simple4 : 0) + (CB_simple5.Checked ? (int)SimpleMode.Simple5 : 0) + (CB_simple6.Checked ? (int)SimpleMode.Simple6 : 0)
+                        + (CB_simple7.Checked ? (int)SimpleMode.Simple7 : 0)+(CB_simple8.Checked ? (int)SimpleMode.Simple8 : 0);
                     if (MainV2.comPort.MAV.param.ContainsKey("SIMPLE"))
                         MainV2.comPort.setParam("SIMPLE", value);
 
                     // supersimple
                     value = (float)(chk_ss1.Checked ? (int)SimpleMode.Simple1 : 0) + (chk_ss2.Checked ? (int)SimpleMode.Simple2 : 0) + (chk_ss3.Checked ? (int)SimpleMode.Simple3 : 0)
-                        + (chk_ss4.Checked ? (int)SimpleMode.Simple4 : 0) + (chk_ss5.Checked ? (int)SimpleMode.Simple5 : 0) + (chk_ss6.Checked ? (int)SimpleMode.Simple6 : 0);
+                        + (chk_ss4.Checked ? (int)SimpleMode.Simple4 : 0) + (chk_ss5.Checked ? (int)SimpleMode.Simple5 : 0) + (chk_ss6.Checked ? (int)SimpleMode.Simple6 : 0)
+                        + (chk_ss7.Checked ? (int)SimpleMode.Simple7 : 0)+(chk_ss8.Checked ? (int)SimpleMode.Simple8 : 0);
                     if (MainV2.comPort.MAV.param.ContainsKey("SUPER_SIMPLE"))
                         MainV2.comPort.setParam("SUPER_SIMPLE", value);
                 }
@@ -261,6 +336,8 @@ namespace MissionPlanner.GCSViews.ConfigurationView
             Simple4 = 8,
             Simple5 = 16,
             Simple6 = 32,
+            Simple7 = 64,
+            Simple8= 128,
         }
 
         public void Deactivate()
@@ -345,6 +422,9 @@ namespace MissionPlanner.GCSViews.ConfigurationView
                     updateDropDown(CMB_fmode4, "MODE4");
                     updateDropDown(CMB_fmode5, "MODE5");
                     updateDropDown(CMB_fmode6, "MODE6");
+                    updateDropDown(CMB_fmode7, "FLTMODE7");
+                    updateDropDown(CMB_fmode8, "FLTMODE8");
+                    updateDropDown(CMB_fmode9, "FLTMODE9");
 
                     CMB_fmode1.SelectedValue = int.Parse(MainV2.comPort.MAV.param["MODE1"].ToString());
                     CMB_fmode2.SelectedValue = int.Parse(MainV2.comPort.MAV.param["MODE2"].ToString());
@@ -353,6 +433,10 @@ namespace MissionPlanner.GCSViews.ConfigurationView
                     CMB_fmode5.SelectedValue = int.Parse(MainV2.comPort.MAV.param["MODE5"].ToString());
                     CMB_fmode6.Text = "Manual";
                     CMB_fmode6.Enabled = false;
+
+                    CMB_fmode7.SelectedValue = int.Parse(MainV2.comPort.MAV.param["FLTMODE7"].ToString());
+                    CMB_fmode8.SelectedValue = int.Parse(MainV2.comPort.MAV.param["FLTMODE8"].ToString());
+                    CMB_fmode9.SelectedValue = int.Parse(MainV2.comPort.MAV.param["FLTMODE9"].ToString());
                 }
                 catch { }
             }
@@ -366,6 +450,9 @@ namespace MissionPlanner.GCSViews.ConfigurationView
                     updateDropDown(CMB_fmode4, "FLTMODE4");
                     updateDropDown(CMB_fmode5, "FLTMODE5");
                     updateDropDown(CMB_fmode6, "FLTMODE6");
+                    updateDropDown(CMB_fmode7, "FLTMODE7");
+                    updateDropDown(CMB_fmode8, "FLTMODE8");
+                    updateDropDown(CMB_fmode9, "FLTMODE9");
 
                     CMB_fmode1.SelectedValue = int.Parse(MainV2.comPort.MAV.param["FLTMODE1"].ToString());
                     CMB_fmode2.SelectedValue = int.Parse(MainV2.comPort.MAV.param["FLTMODE2"].ToString());
@@ -375,6 +462,9 @@ namespace MissionPlanner.GCSViews.ConfigurationView
                     CMB_fmode6.SelectedValue = int.Parse(MainV2.comPort.MAV.param["FLTMODE6"].ToString());
                     CMB_fmode6.Enabled = true;
 
+                    CMB_fmode7.SelectedValue = int.Parse(MainV2.comPort.MAV.param["FLTMODE7"].ToString());
+                    CMB_fmode8.SelectedValue = int.Parse(MainV2.comPort.MAV.param["FLTMODE8"].ToString());
+                    CMB_fmode9.SelectedValue = int.Parse(MainV2.comPort.MAV.param["FLTMODE9"].ToString());
                     if (MainV2.comPort.MAV.param.ContainsKey("SIMPLE"))
                     {
                         int simple = int.Parse(MainV2.comPort.MAV.param["SIMPLE"].ToString());
@@ -385,6 +475,8 @@ namespace MissionPlanner.GCSViews.ConfigurationView
                         CB_simple4.Checked = ((simple >> 3 & 1) == 1);
                         CB_simple5.Checked = ((simple >> 4 & 1) == 1);
                         CB_simple6.Checked = ((simple >> 5 & 1) == 1);
+                        CB_simple7.Checked = ((simple >> 6 & 1) == 1);
+                        CB_simple8.Checked = ((simple >> 7 & 1) == 1);
                     }
 
                     if (MainV2.comPort.MAV.param.ContainsKey("SUPER_SIMPLE"))
@@ -397,6 +489,8 @@ namespace MissionPlanner.GCSViews.ConfigurationView
                         chk_ss4.Checked = ((simple >> 3 & 1) == 1);
                         chk_ss5.Checked = ((simple >> 4 & 1) == 1);
                         chk_ss6.Checked = ((simple >> 5 & 1) == 1);
+                        chk_ss7.Checked = ((simple >> 6 & 1) == 1);
+                        chk_ss8.Checked = ((simple >> 7 & 1) == 1);
                     }
                 }
                 catch { }
